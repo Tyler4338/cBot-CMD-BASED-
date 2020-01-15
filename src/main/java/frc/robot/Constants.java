@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-import edu.wpi.first.wpilibj.SPI;
+//import edu.wpi.first.wpilibj.SPI;
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -21,7 +21,7 @@ public final class Constants {
         public static final int k_Controler_port = 0;
 
         //Gyro Related ports and constants
-        public static final SPI.Port k_GyroPort = SPI.Port.kOnboardCS0;
+        //public static final SPI.Port k_GyroPort = SPI.Port.kOnboardCS0;
     
         //Designated solenoid ports to PCM
         public static final int k_SolenoidClawDeployChannel = 0;

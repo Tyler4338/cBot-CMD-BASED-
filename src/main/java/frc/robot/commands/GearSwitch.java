@@ -14,15 +14,14 @@ public class GearSwitch extends CommandBase {
     }
     @Override
     public void initialize() {
-      gearsOnLow =  !gearsOnLow;
-      gearsOnHigh = !gearsOnHigh;
-
       if(gearsOnLow && !gearsOnHigh){
         m_GearState.setHighGear();
       } 
-      if(gearsOnLow && gearsOnHigh){
+      else if(!gearsOnLow && gearsOnHigh){
         m_GearState.setLowGear();
       } 
+      gearsOnLow = !gearsOnLow;
+      gearsOnHigh = !gearsOnHigh;
     }
 
      @Override
