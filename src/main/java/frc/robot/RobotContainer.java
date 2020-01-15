@@ -10,13 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ClawToggle_CMD;
-import frc.robot.commands.CloseClaw;
+//import edu.wpi.first.wpilibj.GenericHID.Hand;
+import frc.robot.commands.ClawSwitch;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.GearSwitch;
-import frc.robot.commands.OpenClaw;
 import frc.robot.subsystems.Claw_Subsystem;
 import frc.robot.subsystems.Drivetrain_Subsystem;
 import frc.robot.subsystems.MotorGear_Subsystem;
@@ -35,7 +33,6 @@ public class RobotContainer {
 
   // Controllers// x a s
   public final XboxController m_pilot = new XboxController(Constants.k_Controler_port);
-
   private final Compressor compressor = new Compressor(0);
   
 
@@ -45,10 +42,8 @@ public class RobotContainer {
   private final Drivetrain_Subsystem m_Drive = new Drivetrain_Subsystem();
   // commands//
   private final GearSwitch m_GearSwitch = new GearSwitch(m_GearState);
-  private final CloseClaw m_CloseClaw = new CloseClaw(m_Claw);
-  private final OpenClaw m_OpenClaw = new OpenClaw(m_Claw);
   private final DefaultDrive m_DefaultDrive = new DefaultDrive(m_Drive, m_pilot);
-  private final ClawToggle_CMD m_TOGGLE = new ClawToggle_CMD(m_Claw);
+  private final ClawSwitch m_ClawSwitch = new ClawSwitch(m_Claw);
   //CMD GROUPS//
 
   /**
@@ -56,10 +51,9 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the button bindings
-    SmartDashboard.putData(m_Drive);
-    SmartDashboard.putData(m_Claw);
-    SmartDashboard.putData(m_GearState);
-
+    //SmartDashboard.putData(m_Drive);
+    //SmartDashboard.putData(m_Claw);
+    //SmartDashboard.putData(m_GearState);
     compressor.setClosedLoopControl(true);
     configureButtonBindings();
   }
@@ -76,7 +70,7 @@ public class RobotContainer {
     // JoystickButton Gear_ButtonX = new JoystickButton(pilot,
     // XboxController.Button.kX.value);
     Trigger Claw_Button = new JoystickButton(m_pilot, XboxController.Button.kA.value)
-                  .whenPressed(m_TOGGLE);//Change
+                  .whenPressed(m_ClawSwitch);//Change
     //Trigger Claw_ButtonO = new JoystickButton(m_pilot, XboxController.Button.kY.value)
     //              .whenPressed(m_OpenClaw);
     //Trigger Claw_ButtonC = new JoystickButton(m_pilot, XboxController.Button.kB.value)
